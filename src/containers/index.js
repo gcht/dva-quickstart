@@ -8,7 +8,8 @@ import Example from '../components/Example';
 //router组件
 import IndexPage from '../routes/IndexPage';
 
-const IndexPageContainer = connect((state) => { return state })(IndexPage);
+// const IndexPageContainer = connect((state) => { return {} })(IndexPage);//故意return {}
+const IndexPageContainer = connect((state) => { return { ...state.boTreeModel } })(IndexPage);
 export default IndexPageContainer;
 
 export const ExampleContainer = connect((state) => {
