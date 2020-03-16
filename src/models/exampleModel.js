@@ -12,7 +12,41 @@ export default {
     },
     counter: {
       value: 100,
-      showCaption: '这是一个dva demo'
+      showCaption: '这是一个dva demo',
+      options: [
+        {
+          value: 'zhejiang',
+          label: 'Zhejiang',
+          children: [
+            {
+              value: 'hangzhou',
+              label: 'Hangzhou',
+              children: [
+                {
+                  value: 'xihu',
+                  label: 'West Lake',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          value: 'jiangsu',
+          label: 'Jiangsu',
+          children: [
+            {
+              value: 'nanjing',
+              label: 'Nanjing',
+              children: [
+                {
+                  value: 'zhonghuamen',
+                  label: 'Zhong Hua Men',
+                },
+              ],
+            },
+          ],
+        },
+      ]
     }
   },
 
@@ -35,6 +69,9 @@ export default {
 
       return { ...state, ...action.payload };
     },
+    changeName(state, action){
+      return { ...state, ...action.payload };
+    }
   },
 
 };
