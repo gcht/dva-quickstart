@@ -21,26 +21,46 @@ export default class Counter extends Component {
         this.btnClick = this.btnClick.bind(this);
     }
     onChange(value) {
-
+        this.props.dispatch({
+            type: 'exampleModel/changeCity',
+            payload: {
+                userInfo: {
+                    city: value
+                }
+            }
+        });
     }
     btnClick(value) {
         console.log('===========' + value)
+        let randomNum = Math.floor((Math.random() * 100) + 1);
         this.props.dispatch({
             type: 'exampleModel/changeName',
             payload: {
                 userInfo: {
-                    name: '张三1111',
-                    email: 'zhangsan@yonyou.com111'
+                    name: '张三' + randomNum,
+                    email: 'zhangsan' + randomNum + '@yonyou.com'
                 }
             }
         });
 
     }
+
+    renderUserInfo(userInfo) {
+        let strs = [];
+        for (let key in userInfo) {
+            strs.push(<p> {key}：{userInfo[key]}</p>);
+        }
+        return strs;
+    }
     render() {
         return (
             <div>
-                <Cascader options={this.props.counter.options} onChange={this.onChange} placeholder="Please select" />
-                <p> 姓名：{this.props.userInfo.name}</p>
+                <div>
+                    请选择地址：
+                    <Cascader options={this.props.counter.options} onChange={this.onChange} placeholder="Please select" />
+                </div>
+                {this.renderUserInfo(this.props.userInfo)}
+
                 <p> 说明：{this.props.counter.showCaption}</p>
                 <p> 结果：{this.props.counter.value}</p>
                 <button onClick={this.btnClick} value='点击我改变姓名2222' >点击我改变姓名</button>

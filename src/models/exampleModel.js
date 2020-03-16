@@ -69,8 +69,13 @@ export default {
 
       return { ...state, ...action.payload };
     },
-    changeName(state, action){
-      return { ...state, ...action.payload };
+    changeName(state, action) {
+      let new_userInfo = { ...state.userInfo, ...action.payload.userInfo }
+      return { ...state, ...{ userInfo: new_userInfo } };
+    },
+    changeCity(state, action) {
+      let new_userInfo = { ...state.userInfo, ...action.payload.userInfo }
+      return { ...state, ...{ userInfo: new_userInfo } };
     }
   },
 
