@@ -1,5 +1,4 @@
 import dva from 'dva';
-import { connect } from "dva"; //从dva中导入connect
 
 import './index.css';
 import exampleModel from './models/exampleModel';
